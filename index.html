@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Valentine 💖</title>
+<title>Valentine 🫶</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -37,28 +37,15 @@ button{
     color:white;
     position:absolute;
 }
-
-/* Floating hearts */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    font-size:20px;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    0%{ transform:translateY(0); opacity:1; }
-    100%{ transform:translateY(-100vh); opacity:0; }
-}
 </style>
 </head>
 
 <body>
 
-<h1>Will you be my Valentine? 💕</h1>
+<h1>Will you be my Valentine? 🫶</h1>
 
-<button id="yes" onclick="yesClick()">YES 💖</button>
-<button id="no">NO 😢</button>
+<button id="yes" onclick="yesClick()">YES 🥰</button>
+<button id="no">NO 😝</button>
 
 <script>
 let yesSize = 18;
@@ -74,36 +61,29 @@ function moveNo(){
 
     yesSize += 5;
     yesBtn.style.fontSize = yesSize + "px";
-    yesBtn.style.padding = (yesSize) + "px " + (yesSize+10) + "px";
+    yesBtn.style.padding = yesSize + "px " + (yesSize + 10) + "px";
 }
 
 noBtn.addEventListener("touchstart", moveNo);
 noBtn.addEventListener("mouseover", moveNo);
 
-// YES clicked
+// YES clicked – show photo
 function yesClick(){
     document.body.innerHTML = `
-        <h1 style="color:#ff4d88; margin-top:100px;">
+        <h1 style="color:#ff4d88; margin-top:40px;">
         Yaaay! 💖<br>
-        See you on Valentine's! 🥰
+        I love you! 🥰
         </h1>
+
+        <img src="photo.jpg"
+        style="width:260px; border-radius:15px; margin-top:20px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+
+        <p style="font-size:20px; color:#ff4d88; margin-top:15px;">
+        See you on Valentine's! 💕
+        </p>
     `;
 }
-
-// Floating hearts
-function createHeart(){
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random()*20 + 15) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{ heart.remove(); },6000);
-}
-
-setInterval(createHeart, 500);
 </script>
 
 </body>
-</html>
+</html></html>

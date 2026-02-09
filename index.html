@@ -54,23 +54,29 @@ const noBtn = document.getElementById("no");
 
 // Move NO + make YES bigger
 function moveNo(){
-    const minDistance = 150; // distance between YES and NO
     let x, y;
+    const padding = 30; // space between YES and NO
+
+    const noWidth = noBtn.offsetWidth;
+    const noHeight = noBtn.offsetHeight;
 
     const yesRect = yesBtn.getBoundingClientRect();
 
     do {
-        x = Math.random() * (window.innerWidth - 100);
-        y = Math.random() * (window.innerHeight - 100);
+        x = Math.random() * (window.innerWidth - noWidth);
+        y = Math.random() * (window.innerHeight - noHeight);
+
     } while (
-        Math.abs(x - yesRect.left) < minDistance &&
-        Math.abs(y - yesRect.top) < minDistance
+        x < yesRect.right + padding &&
+        x + noWidth > yesRect.left - padding &&
+        y < yesRect.bottom + padding &&
+        y + noHeight > yesRect.top - padding
     );
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 
-    // Make YES bigger
+    // Palakihin ang YES
     yesSize += 5;
     yesBtn.style.fontSize = yesSize + "px";
     yesBtn.style.padding = yesSize + "px " + (yesSize + 10) + "px";
@@ -99,5 +105,6 @@ function yesClick(){
 
 </body>
 </html></html>
+
 
 

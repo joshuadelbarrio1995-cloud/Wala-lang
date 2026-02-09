@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    text-align:center;
+    font-family: Arial;
+    background:#ffe6f0;
+    overflow:hidden;
+    margin-top:60px;
+}
+
+h1{
+    color:#ff4d88;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    margin:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#yes{
+    background:#ff4d88;
+    color:white;
+}
+
+#no{
+    background:#999;
+    color:white;
+    position:absolute;
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{ transform:translateY(0); opacity:1; }
+    100%{ transform:translateY(-100vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine? 💕</h1>
+
+<button id="yes" onclick="yesClick()">YES 💖</button>
+<button id="no">NO 😢</button>
+
+<script>
+let yesSize = 18;
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+
+// Move NO + make YES bigger
+function moveNo(){
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    yesSize += 5;
+    yesBtn.style.fontSize = yesSize + "px";
+    yesBtn.style.padding = (yesSize) + "px " + (yesSize+10) + "px";
+}
+
+noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("mouseover", moveNo);
+
+// YES clicked
+function yesClick(){
+    document.body.innerHTML = `
+        <h1 style="color:#ff4d88; margin-top:100px;">
+        Yaaay! 💖<br>
+        See you on Valentine's! 🥰
+        </h1>
+    `;
+}
+
+// Floating hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random()*20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{ heart.remove(); },6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
